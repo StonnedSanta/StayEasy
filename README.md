@@ -1,6 +1,6 @@
 # StayEase
 
-StayEase is a RESTful backend application for hotel booking management built with Spring Boot. It provides secure user authentication, role-based authorization, hotel management, and booking workflows.
+StayEasy is a RESTful backend application for hotel booking management built with Spring Boot. It provides secure user authentication, role-based authorization, hotel management, and booking workflows.
 
 ## Features
 
@@ -14,7 +14,7 @@ StayEase is a RESTful backend application for hotel booking management built wit
 
 ## Tech Stack
 
-- Java 21
+- Java 25
 - Spring Boot
 - Spring Security
 - Spring Data JPA (Hibernate)
