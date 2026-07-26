@@ -1,4 +1,4 @@
-package com.anuj.stayease.enums;
+package com.anuj.stayeasy.enums;
 
 public enum BookingStatus {
 

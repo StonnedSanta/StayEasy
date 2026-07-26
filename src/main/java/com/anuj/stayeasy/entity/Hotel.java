@@ -1,4 +1,4 @@
-package com.anuj.stayease.entity;
+package com.anuj.stayeasy.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

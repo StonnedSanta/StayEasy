@@ -1,13 +1,13 @@
-package com.anuj.stayease;
+package com.anuj.stayeasy;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class StayeaseApplication {
+public class StayeasyApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(StayeaseApplication.class, args);
+		SpringApplication.run(StayeasyApplication.class, args);
 	}
 
 }
