@@ -22,8 +22,8 @@ public class StayeasyApplication {
 		return args -> {
 			User user = new User();
 
-			user.setFullName("Anish S");
-			user.setEmail("anish21@gmail.com");
+			user.setFullName("Anuj S");
+			user.setEmail("anuj123@gmail.com");
 			user.setPassword("123654");
 
 			User savedUser = userService.register(user);
