@@ -16,20 +16,20 @@ public class StayeasyApplication {
 
 	}
 
-	@Bean
-	CommandLineRunner test(UserService userService) {
+// 	@Bean
+// 	CommandLineRunner test(UserService userService) {
 
-		return args -> {
-			User user = new User();
+// 		return args -> {
+// 			User user = new User();
 
-			user.setFullName("Anuj S");
-			user.setEmail("anuj123@gmail.com");
-			user.setPassword("123654");
+// 			user.setFullName("Anuj S");
+// 			user.setEmail("anuj123@gmail.com");
+// 			user.setPassword("123654");
 
-			User savedUser = userService.register(user);
+// 			User savedUser = userService.register(user);
 
-			System.out.println(savedUser);
-		};
-	}
+// 			System.out.println(savedUser);
+// 		};
+// 	}
 
 }
