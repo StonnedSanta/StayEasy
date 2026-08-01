@@ -1,7 +1,5 @@
 package com.anuj.stayeasy.service;
 
-import com.anuj.stayeasy.repository.BookingRepository;
-
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -28,6 +26,7 @@ public class UserService {
 
       // email
       String email = user.getEmail();
+      System.out.println(user.getName());
       Optional<User> existingUser = userRepository.findByEmail(email);
       if(existingUser.isPresent()) {
          System.out.println("Email alredy exists");
