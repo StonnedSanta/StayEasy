@@ -7,6 +7,9 @@ import com.anuj.stayeasy.dto.request.RegisterUserRequest;
 import com.anuj.stayeasy.dto.response.RegisterUserResponse;
 import com.anuj.stayeasy.entity.User;
 import com.anuj.stayeasy.service.UserService;
+
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -22,7 +25,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public RegisterUserResponse register(@RequestBody RegisterUserRequest request) {
+    public RegisterUserResponse register(@Valid @RequestBody RegisterUserRequest request) {
         User user  = new User();
         user.setName(request.getName());
         user.setEmail(request.getEmail());
