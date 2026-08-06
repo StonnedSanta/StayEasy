@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.anuj.stayeasy.dto.request.LoginUserRequest;
 import com.anuj.stayeasy.entity.User;
 import com.anuj.stayeasy.enums.Role;
 import com.anuj.stayeasy.repository.UserRepository;
@@ -41,4 +42,24 @@ public class UserService {
         // Save user
         return userRepository.save(user);
     }
+
+      public User login(LoginUserRequest request) {
+
+      Optional<User> existingUser = userRepository.findByEmail(request.getEmail());
+
+      // Email not found
+      if (existingUser.isEmpty()) {
+         return null;
+      }
+
+      User user = existingUser.get();
+
+      // Verify password
+      if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+         return null;
+      }
+
+      return user;
+   }
+
 }
