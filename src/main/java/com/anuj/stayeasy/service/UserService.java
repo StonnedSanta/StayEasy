@@ -2,6 +2,7 @@ package com.anuj.stayeasy.service;
 
 import java.util.Optional;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.anuj.stayeasy.entity.User;
@@ -10,35 +11,34 @@ import com.anuj.stayeasy.repository.UserRepository;
 
 @Service
 public class UserService {
-     // add @Service annotation
-     // add dependencies
-     // implement constructor injection
-     // CRUD operations
 
-     private final UserRepository userRepository;
-     
-     public UserService(UserRepository userRepository) {
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+
+    public UserService(UserRepository userRepository,
+                       PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
-     }
+        this.passwordEncoder = passwordEncoder;
+    }
 
-     // create
-     public User register(User user) {
+    public User register(User user) {
 
-      // email
-      String email = user.getEmail();
-      System.out.println(user.getName());
-      Optional<User> existingUser = userRepository.findByEmail(email);
-      if(existingUser.isPresent()) {
-         System.out.println("Email alredy exists");
-         return null;
-      }
-        
-      // assign default role
-      user.setRole(Role.CUSTOMER);
+        String email = user.getEmail();
 
-      // save user
-      return userRepository.save(user);
+        Optional<User> existingUser = userRepository.findByEmail(email);
 
-   }
+        if (existingUser.isPresent()) {
+            System.out.println("Email already exists");
+            return null;
+        }
 
+        // Assign default role
+        user.setRole(Role.CUSTOMER);
+
+        // Encrypt password
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+        // Save user
+        return userRepository.save(user);
+    }
 }
