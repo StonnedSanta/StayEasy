@@ -27,6 +27,42 @@ public class HotelService {
 
     public List<Hotel> getAllHotels() {
         return hotelRepository.findAll();
-    }      
+    }
+    
+    public Hotel getHotelById(Long id) {
+
+    return hotelRepository.findById(id)
+            .orElse(null);
+    }
+
+    public Hotel updateHotel(Long id, Hotel updatedHotel) {
+
+        Hotel existingHotel = hotelRepository.findById(id)
+                .orElse(null);
+
+        if (existingHotel == null) {
+            return null;
+        }
+
+        existingHotel.setName(updatedHotel.getName());
+        existingHotel.setDescription(updatedHotel.getDescription());
+        existingHotel.setCity(updatedHotel.getCity());
+        existingHotel.setAddress(updatedHotel.getAddress());
+        existingHotel.setTotalRooms(updatedHotel.getTotalRooms());
+        existingHotel.setAvailableRooms(updatedHotel.getAvailableRooms());
+
+        return hotelRepository.save(existingHotel);
+    }
+
+    public void deleteHotel(Long id) {
+
+        Hotel hotel = hotelRepository.findById(id)
+                .orElse(null);
+
+        if (hotel != null) {
+            hotelRepository.delete(hotel);
+        }
+    }
+
 }
 
